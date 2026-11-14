@@ -6,9 +6,19 @@ on:
     branches:
       - main
       - 'feature/*'
-    
+env: 
+  MONGO_URI: 'mongodb+_srv://supercluster.d83jj.mongodb.net/superData'
+  MONGO_USERNAME: ${{ vars.MONGO_USERNAME }}
+  MONGO_PASSWORD: ${{ secrets.MONGO_PASSWORD }}    
 jobs:
     unit-testing:
+    strategy: 
+      matrix: 
+        nodejs_version: [18, 19, 20]
+        operating_system: [ubuntu-latest, macos-latest]
+        exclude: 
+          - nodejs_version: 18
+            operating_system: macos-latest 
         name: Unit Testing
         runs-on: ubuntu-latest
         steps:
