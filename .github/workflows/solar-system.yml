@@ -64,9 +64,9 @@
         run: npm code coverage
 
       - name: Archive Test Result
-        uses: actions/upload-artifacat@v4
+        uses: actions/upload-artifact@v4
         with: 
           name: Code-Coverage-Result
           path: coverage
-          retention-days: 5 
+          retention-days: 5
 
