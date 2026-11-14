@@ -45,7 +45,6 @@
             name: Mocha-Test-Result
             path: test-results.xml
            
-  jobs:
     code-coverage: 
       name: Code Coverage
       runs-on: ubuntu-lates
