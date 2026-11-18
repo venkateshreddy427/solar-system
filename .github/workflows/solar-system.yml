@@ -121,3 +121,10 @@ jobs:
 
         echo "Testing Image URL using wget"
         wget -q -O - http://127.0.0.1:3000/live | grep live
+
+    - name: Docker Push
+      uses: docker/build-push-action@v7
+      with: 
+        context: .  # This is the path where we have a docker file in the root directlry
+        push: true  # Here we are not pushing it to the docker registery 
+        tags: ${{ vars.DOCKERHUB_USERNAME }}/solar-system:${{ github.sha }}        
