@@ -137,4 +137,4 @@ jobs:
         # We can define multiple registery as well
         tags: |
            ${{ vars.DOCKERHUB_USERNAME }}/solar-system:${{ github.sha }}
-           ghrc.io/${{ github.repository_owner }}/solar-system:${{ github.sha }}      
+           ghcr.io/${{ github.repository_owner }}/solar-system:${{ github.sha }}      
