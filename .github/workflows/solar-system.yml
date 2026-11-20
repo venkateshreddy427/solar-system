@@ -172,12 +172,16 @@ jobs:
         uses: azure/setup-kubectl@v4
         with:
             version: 'v1.32.0'
-
-      - name: Set Kubernetes Context
-        uses: azure/k8s-set-context@v4
+      - name: Create temporary Kind Kubernetes cluster
+        uses: helm/kind-action@v1
         with:
-          method: kubeconfig
-          kubeconfig: ${{ secrets.KUBE_CONFIG }}      
+          cluster_name: solar-system-test
+
+      # - name: Set Kubernetes Context
+      #   uses: azure/k8s-set-context@v4
+      #   with:
+      #     method: kubeconfig
+      #     kubeconfig: ${{ secrets.KUBE_CONFIG }}      
       
       - name: Fetch Kubernetes Cluster Details
         run: | 
