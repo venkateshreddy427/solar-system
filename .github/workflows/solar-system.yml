@@ -183,6 +183,14 @@ jobs:
       #     method: kubeconfig
       #     kubeconfig: ${{ secrets.KUBE_CONFIG }}      
       
+      - name: Install NGINX Ingress Controller
+        run: |
+          kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
+          kubectl wait --namespace ingress-nginx \
+            --for=condition=ready pod \
+            --selector=app.kubernetes.io/component=controller \
+            --timeout=90s
+
       - name: Fetch Kubernetes Cluster Details
         run: | 
            kubectl version -o yaml 
